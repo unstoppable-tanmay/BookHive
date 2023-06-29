@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "188374312413",
+    "project_id": "bookhive-ccb69",
+    "storage_bucket": "bookhive-ccb69.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:188374312413:android:8a12ee6e5bcf6ab413c234",
+        "android_client_info": {
+          "package_name": "com.example.bookhive"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "188374312413-629hmsc364anrg6ii51eou1t5uur4dva.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCazmNNp3ZWVjti1Z3m2x8SbRaxCOQltVw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "188374312413-629hmsc364anrg6ii51eou1t5uur4dva.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
