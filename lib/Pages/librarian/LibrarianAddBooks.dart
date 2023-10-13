@@ -51,7 +51,7 @@ class _LibrarianAddBooksState extends State<LibrarianAddBooks> {
       ),
       body: Center(
         child: SingleChildScrollView(
-          physics: const NeverScrollableScrollPhysics(),
+          // physics: const NeverScrollableScrollPhysics(),
           child: SizedBox(
             height: height * .87,
             width: width*.86,

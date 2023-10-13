@@ -1,3 +1,4 @@
+import 'package:bookhive/Pages/librarian/LibrarianEditBooks.dart';
 import 'package:bookhive/Services/getData.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -50,6 +51,7 @@ ShowDialog(width, context, BookData ele) {
                 ),
                 Text(
                   ele.name,
+                  textAlign: TextAlign.center,
                   style: const TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.w500,
@@ -57,6 +59,7 @@ ShowDialog(width, context, BookData ele) {
                   maxLines: 2,
                 ),
                 Text(ele.author,
+                  textAlign: TextAlign.center,
                     style: const TextStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.bold,
@@ -133,38 +136,108 @@ ShowDialog(width, context, BookData ele) {
                   )
                 else if (UserType == 'librarian')
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       MaterialButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(context, MaterialPageRoute(
+                            builder: (context) {
+                              return LibrarianEditBooks(Book: ele);
+                            },
+                          ));
+                        },
                         padding: const EdgeInsets.symmetric(
                             vertical: 7, horizontal: 25),
                         autofocus: true,
                         elevation: 4,
-                        color: Colors.teal.shade700,
+                        color: Colors.grey.shade500,
                         shape: RoundedRectangleBorder(
                             side:
                                 const BorderSide(width: 1, color: Colors.white),
                             borderRadius: BorderRadius.circular(39.0)),
                         child: const Text(
-                          "Edit Book",
-                          style: TextStyle(fontSize: 18, color: Colors.white),
+                          "Edit",
+                          style: TextStyle(fontSize: 15, color: Colors.white),
                         ),
                       ),
                       MaterialButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          showDialog(
+                            context: context,
+                            builder: (context) {
+                              return AlertDialog(
+                                title: Text("Delete ${ele.name}"),
+                                content: const Text(
+                                    "If Deleted then Permanently deleted data can not be recovered"),
+                                actions: [
+                                  MaterialButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 7, horizontal: 25),
+                                    autofocus: true,
+                                    elevation: 4,
+                                    color: Colors.grey.shade400,
+                                    shape: RoundedRectangleBorder(
+                                        side: const BorderSide(
+                                            width: 1, color: Colors.white),
+                                        borderRadius:
+                                            BorderRadius.circular(39.0)),
+                                    child: const Text(
+                                      "Cancel",
+                                      style: TextStyle(
+                                          fontSize: 18, color: Colors.white),
+                                    ),
+                                  ),
+                                  MaterialButton(
+                                    onPressed: () async {
+                                      try {
+                                        await FirebaseFirestore.instance
+                                            .collection('books')
+                                            .doc(ele.id)
+                                            .delete()
+                                            .then(
+                                                (value) => showToast("Deleted"))
+                                            .onError((error, stackTrace) =>
+                                                showToast(error));
+                                      } catch (e) {
+                                        showToast(e);
+                                      }
+                                    },
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 7, horizontal: 25),
+                                    autofocus: true,
+                                    elevation: 4,
+                                    color: Colors.orange.shade200,
+                                    shape: RoundedRectangleBorder(
+                                        side: const BorderSide(
+                                            width: 1, color: Colors.white),
+                                        borderRadius:
+                                            BorderRadius.circular(39.0)),
+                                    child: const Text(
+                                      "Delete",
+                                      style: TextStyle(
+                                          fontSize: 15, color: Colors.white),
+                                    ),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                        },
                         padding: const EdgeInsets.symmetric(
                             vertical: 7, horizontal: 25),
                         autofocus: true,
                         elevation: 4,
-                        color: Colors.orangeAccent.shade700,
+                        color: Colors.orangeAccent.shade200,
                         shape: RoundedRectangleBorder(
                             side:
                                 const BorderSide(width: 1, color: Colors.white),
                             borderRadius: BorderRadius.circular(39.0)),
                         child: const Text(
-                          "Delete Book",
-                          style: TextStyle(fontSize: 18, color: Colors.white),
+                          "Delete",
+                          style: TextStyle(fontSize: 15, color: Colors.white),
                         ),
                       ),
                     ],

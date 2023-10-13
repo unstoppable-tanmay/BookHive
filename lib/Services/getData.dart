@@ -12,9 +12,11 @@ class BookData {
   final String star;
   final String pages;
   final String size;
+  final String id;
 
   BookData(
-      {required this.image,
+      {required this.id,
+      required this.image,
       required this.color,
       required this.name,
       required this.author,
@@ -68,6 +70,7 @@ String Uid = '';
 setBooks(List<QueryDocumentSnapshot<Map<String, dynamic>>> data) {
   Books = [];
   Books.addAll(data.map((e) => BookData(
+      id: e.get('id'),
       image: e.get('image'),
       color: e.get('color'),
       name: e.get('name'),
@@ -129,11 +132,11 @@ getUserData(String uid) async {
 getUsers() async {
   await db
       .collection('user')
-      .where('role', whereIn: ['student','librarian'])
+      .where('role', whereIn: ['student', 'librarian'])
       .get()
       .then((value) {
-    setUsers(value.docs);
-  });
+        setUsers(value.docs);
+      });
   print(Users.length);
 }
 

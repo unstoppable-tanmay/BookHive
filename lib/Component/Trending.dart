@@ -28,7 +28,7 @@ class Trending extends StatelessWidget {
       child: Container(
           width: width,
           padding:
-              const EdgeInsets.only(left: 20, right: 10, top: 15, bottom: 15),
+              const EdgeInsets.only(left: 15, right: 15, top: 15, bottom: 15),
           decoration: BoxDecoration(
               color: hexToColor(ele.color),
               borderRadius: BorderRadius.circular(12)),
@@ -37,20 +37,21 @@ class Trending extends StatelessWidget {
               Container(
                 width: localwidth * .3,
                 height: double.infinity,
-                margin: EdgeInsets.only(top: 6, bottom: 6),
+                margin: const EdgeInsets.only(top: 6, bottom: 6),
                 clipBehavior: Clip.hardEdge,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5),
                   color: Colors.black26,
                 ),
                 child: CachedNetworkImage(
+                  useOldImageOnUrlChange: true,
                   imageUrl: ele.image,
-                  placeholderFadeInDuration: Duration(milliseconds: 100),
-                  placeholder: (context, url) => Center(
+                  placeholderFadeInDuration: const Duration(milliseconds: 100),
+                  placeholder: (context, url) => const Center(
                       child: CircularProgressIndicator(
                     color: Colors.white,
                   )),
-                  errorWidget: (context, url, error) => Icon(Icons.error),
+                  errorWidget: (context, url, error) => const Icon(Icons.error),
                   fit: BoxFit.fill,
                 ),
               ),
@@ -58,62 +59,65 @@ class Trending extends StatelessWidget {
                 width: 15,
               ),
               Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      width: localwidth * .5,
-                      child: Text(
-                        ele.name,
-                        style: TextStyle(
-                            overflow: TextOverflow.fade,
-                            fontSize: 22,
-                            fontWeight: FontWeight.w500,
-                            color: textColor ? Colors.black : Colors.white),
-                        maxLines: 2,
+                child: SizedBox(
+                  height: double.infinity,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        width: localwidth * .5,
+                        child: Text(
+                          ele.name,
+                          style: TextStyle(
+                              overflow: TextOverflow.fade,
+                              fontSize: 22,
+                              fontWeight: FontWeight.w500,
+                              color: textColor ? Colors.black : Colors.white),
+                          maxLines: 2,
+                        ),
                       ),
-                    ),
-                    Text(ele.author,
-                        style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                            color:
-                                textColor ? Colors.black54 : Colors.white54)),
-                    const SizedBox(
-                      height: 25,
-                    ),
-                    Star(count: int.parse(ele.star), color: textColor),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Container(
-                      padding: const EdgeInsets.all(5),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          color: textColor ? Colors.black12 : Colors.white30),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "${ele.size} MB",
-                            style: TextStyle(
-                                fontSize: 15,
-                                color: textColor ? Colors.black : Colors.white),
-                          ),
-                          const SizedBox(
-                            width: 7,
-                          ),
-                          Text(
-                            "${ele.pages} Pages",
-                            style: TextStyle(
-                                fontSize: 15,
-                                color: textColor ? Colors.black : Colors.white),
-                          )
-                        ],
+                      Text(ele.author,
+                          style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                              color:
+                                  textColor ? Colors.black54 : Colors.white54)),
+                      const SizedBox(
+                        height: 15,
                       ),
-                    )
-                  ],
+                      Star(count: int.parse(ele.star), color: textColor),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Container(
+                        padding: const EdgeInsets.all(5),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5),
+                            color: textColor ? Colors.black12 : Colors.white30),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "${ele.size} MB",
+                              style: TextStyle(
+                                  fontSize: 14,
+                                  color: textColor ? Colors.black : Colors.white),
+                            ),
+                            const SizedBox(
+                              width: 7,
+                            ),
+                            Text(
+                              "${ele.pages} Pages",
+                              style: TextStyle(
+                                  fontSize: 14,
+                                  color: textColor ? Colors.black : Colors.white),
+                            )
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               )
             ],

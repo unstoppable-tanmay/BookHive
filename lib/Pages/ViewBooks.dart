@@ -54,34 +54,34 @@ class _ViewBooksState extends State<ViewBooks> {
       ),
       body: Books.isEmpty
           ? Align(
-            alignment: Alignment.center,
+              alignment: Alignment.center,
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-              const Text(
-                "Something Went Wrong",
-                style: TextStyle(fontSize: 20),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              MaterialButton(
-                onPressed: () async {
-                  await getBooks();
-                  setState(() {});
-                },
-                height: 45,
-                minWidth: width * .8,
-                elevation: 0,
-                highlightElevation: 0,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10)),
-                color: Colors.white,
-                child: Text("Refresh",
-                    style:
-                        TextStyle(fontSize: 17, color: Colors.grey.shade900)),
-              ),
-            ]))
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text(
+                      "Something Went Wrong",
+                      style: TextStyle(fontSize: 20),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    MaterialButton(
+                      onPressed: () async {
+                        await getBooks();
+                        setState(() {});
+                      },
+                      height: 45,
+                      minWidth: width * .8,
+                      elevation: 0,
+                      highlightElevation: 0,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10)),
+                      color: Colors.white,
+                      child: Text("Refresh",
+                          style: TextStyle(
+                              fontSize: 17, color: Colors.grey.shade900)),
+                    ),
+                  ]))
           : LiquidPullToRefresh(
               onRefresh: () async {
                 getBooks();
@@ -163,7 +163,8 @@ class _ViewBooksState extends State<ViewBooks> {
                           crossAxisSpacing: 20.0,
                           mainAxisSpacing: 30.0,
                           shrinkWrap: true,
-                          childAspectRatio: .66,
+                          
+                          childAspectRatio: .61,
                           children: Books.map((ele) {
                             return InkWell(
                               onTap: () {
@@ -226,7 +227,8 @@ class _ViewBooksState extends State<ViewBooks> {
                                           // SizedBox(height: 10,),
                                           Container(
                                             width: constraints.maxWidth * .85,
-                                            height: constraints.maxHeight * .73,
+                                            height:
+                                                constraints.maxHeight * .73,
                                             clipBehavior: Clip.hardEdge,
                                             decoration: BoxDecoration(
                                                 color: Colors.black12,

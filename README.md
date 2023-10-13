@@ -1,16 +1,37 @@
-# bookhive
+# BookHive
 
-A new Flutter project.
+A flutter project for our college library. . .
 
-## Getting Started
+> link - https://github.com/unstoppable-tanmay/BookHive/tree/main/release/app-arm64-v8a-release.apk
 
-This project is a starting point for a Flutter application.
+> link - https://github.com/unstoppable-tanmay/BookHive/tree/main/release/app-arm64-v8a-release.apk
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Project Details
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Login details - user can login by the details created and mailed to him by the college - mail and password are hardcoded firstly then they can change this
+
+|            Login             |            Books             |
+| :--------------------------: | :--------------------------: |
+| ![](./screenshots/login.jpg) | ![](./screenshots/books.jpg) |
+
+## User - user means students they can search books and can request books, extend books lease time and request return
+
+|          Student Account          |          Student Request           |
+| :----------------------------: | :-----------------------------: |
+| ![](./screenshots/student.jpg) | ![](./screenshots/student1.jpg) |
+| ![](./screenshots/student2.jpg) | ![](./screenshots/student123.jpg) |
+
+## Librarian - Librarian can accept request add books etc
+
+|      Librarian Account      |        Accept Request        |
+| :-------------------------: | :--------------------------: |
+| ![](./screenshots/lib1.jpg) | ![](./screenshots/lib2.jpg)  |
+|          Add books          |         update books         |
+| ![](./screenshots/lib.jpg)  | ![](./screenshots/lib3.jpg) |
+
+## Admin - Admin can add student, librarian, and manage book detaild and accound details
+
+|         Admin Account         |         Admin Pannel         |
+| :---------------------------: | :--------------------------: |
+| ![](./screenshots/admin1.jpg) | ![](./screenshots/admin.jpg) |
